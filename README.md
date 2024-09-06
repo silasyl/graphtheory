@@ -2,8 +2,8 @@
 Graph Algorithms with Python
 
 Based on original codes in Java from: https://github.com/williamfiset/
-With my own improvements
-@silasyl
+<br>With my own improvements
+<br>@silasyl
 
 # Files:
 
