@@ -1,7 +1,7 @@
-from structures import AdjacencyList
+from auxiliars.structures import AdjacencyList
 from collections import deque
 
-def breadth_first_search_recursive(graph: AdjacencyList, start:int, DEPTH_TOKEN=-1) -> int:
+def bfs_recursive(graph: AdjacencyList, start:int, DEPTH_TOKEN=-1) -> int:
     """
     This is an implementation of doing a breadth first search recursively with a slight cheat of
     passing in a queue as an argument to the function.
@@ -17,10 +17,10 @@ def breadth_first_search_recursive(graph: AdjacencyList, start:int, DEPTH_TOKEN=
     n = len(graph)
     visited = [False] * n
     queue = deque([start, DEPTH_TOKEN])
-    return bfs_recursive(visited, queue, graph, DEPTH_TOKEN)
+    return bfs_recursive_step(visited, queue, graph, DEPTH_TOKEN)
     
 
-def bfs_recursive(visited, queue, graph, DEPTH_TOKEN=-1) -> int:
+def bfs_recursive_step(visited, queue, graph, DEPTH_TOKEN=-1) -> int:
         
     at = queue.popleft()
 
@@ -50,7 +50,7 @@ def bfs_recursive(visited, queue, graph, DEPTH_TOKEN=-1) -> int:
             break
 
         # The depth is the sum of all DEPTH_TOKENS encountered.
-        depth += bfs_recursive(visited, queue, graph, DEPTH_TOKEN)
+        depth += bfs_recursive_step(visited, queue, graph, DEPTH_TOKEN)
 
     return depth
 
@@ -71,4 +71,4 @@ if __name__ == "__main__":
     graph.add_undirected_edge(0, 10)
     graph.add_undirected_edge(11, 12)
 
-    print(breadth_first_search_recursive(graph, start=12))
+    print(bfs_recursive(graph, start=12))
