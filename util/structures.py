@@ -1,8 +1,6 @@
 class AdjacencyList:
 
     # Adjacency List representation of a graph
-    # Will begin with undirected graph
-    # Will begin with graph without weights
 
     def __init__(self, n: int):
         self.n = n
@@ -14,9 +12,9 @@ class AdjacencyList:
     def __getitem__(self, index):
         return self.graph[index]
 
-    def add_undirected_edge(self, from_node, to_node):
-        self.graph[from_node].append(to_node)
-        self.graph[to_node].append(from_node)
+    def add_undirected_edge(self, from_node, to_node, weight=0):
+        self.graph[from_node].append((to_node, weight))
+        self.graph[to_node].append((from_node, weight))
 
 
 if __name__ == "__main__":

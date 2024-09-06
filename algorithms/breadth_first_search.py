@@ -1,4 +1,4 @@
-from auxiliars.structures import AdjacencyList
+from util.structures import AdjacencyList
 from collections import deque
 
 def bfs_recursive(graph: AdjacencyList, start:int, DEPTH_TOKEN=-1) -> int:
@@ -39,8 +39,8 @@ def bfs_recursive_step(visited, queue, graph, DEPTH_TOKEN=-1) -> int:
     neighbors = graph[at]
     if neighbors:
         for next_node in neighbors:
-            if not visited[next_node]:
-                queue.append(next_node)
+            if not visited[next_node[0]]:
+                queue.append(next_node[0])
 
     depth = 0
 
