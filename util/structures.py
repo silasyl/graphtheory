@@ -16,6 +16,9 @@ class AdjacencyList:
         self.graph[from_node].append((to_node, weight))
         self.graph[to_node].append((from_node, weight))
 
+    def add_directed_edge(self, from_node, to_node, weight=0):
+        self.graph[from_node].append((to_node, weight))
+
 
 if __name__ == "__main__":
     graph = AdjacencyList(n=14)
