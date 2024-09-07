@@ -1,4 +1,4 @@
-from util.structures import AdjacencyList
+from util.graph_structures import AdjacencyList
 import networkx as nx
 import matplotlib.pyplot as plt
 
