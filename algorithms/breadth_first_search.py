@@ -19,7 +19,7 @@ class BreadthFirstSearch:
         This is an implementation of doing a breadth first search recursively with a slight cheat of
         passing in a queue as an argument to the function.
         Time Complexity: O(V + E)
-        Based on original code in Java from: https://github.com/williamfiset/
+        Based on original code in Java from: https://github.com/williamfiset/Algorithms
         """
 
         # Computes the eccentricity (distance to furtherst node) from the starting node.
