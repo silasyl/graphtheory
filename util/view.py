@@ -1,4 +1,4 @@
-from util.graph_structures import AdjacencyList
+from util.graph_structures import AdjacencyList, AdjacencyMatrix
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -7,6 +7,9 @@ def view_graph(graph, directed=True):
         G = nx.DiGraph()
     else:
         G = nx.Graph()
+
+    if isinstance(graph, AdjacencyMatrix):
+        graph = AdjacencyList(graph)
 
     if isinstance(graph, AdjacencyList):
         is_weighted = False

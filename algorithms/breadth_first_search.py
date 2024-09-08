@@ -1,9 +1,11 @@
-from util.graph_structures import AdjacencyList
+from util.graph_structures import AdjacencyList, AdjacencyMatrix
 from collections import deque
 
 class BreadthFirstSearch:
 
-    def __init__(self, graph: AdjacencyList):
+    def __init__(self, graph):
+        if isinstance(graph, AdjacencyMatrix):
+            graph = AdjacencyList(graph)
         self.graph = graph
         self.DEPTH_TOKEN = -1
         # Each breadth first search layer gets separated by a DEPTH_TOKEN.
@@ -62,20 +64,20 @@ class BreadthFirstSearch:
 
 
 if __name__ == "__main__":
-    graph = AdjacencyList(n=14)
-    graph.add_undirected_edge(0, 1)
-    graph.add_undirected_edge(0, 2)
-    graph.add_undirected_edge(0, 3)
-    graph.add_undirected_edge(2, 9)
-    graph.add_undirected_edge(8, 2)
-    graph.add_undirected_edge(3, 4)
-    graph.add_undirected_edge(10, 11)
-    graph.add_undirected_edge(12, 13)
-    graph.add_undirected_edge(3, 5)
-    graph.add_undirected_edge(5, 7)
-    graph.add_undirected_edge(5, 6)
-    graph.add_undirected_edge(0, 10)
-    graph.add_undirected_edge(11, 12)
+    graph = AdjacencyList(14)
+    graph.add_edge(0, 1, directed=False)
+    graph.add_edge(0, 2, directed=False)
+    graph.add_edge(0, 3, directed=False)
+    graph.add_edge(2, 9, directed=False)
+    graph.add_edge(8, 2, directed=False)
+    graph.add_edge(3, 4, directed=False)
+    graph.add_edge(10, 11, directed=False)
+    graph.add_edge(12, 13, directed=False)
+    graph.add_edge(3, 5, directed=False)
+    graph.add_edge(5, 7, directed=False)
+    graph.add_edge(5, 6, directed=False)
+    graph.add_edge(0, 10, directed=False)
+    graph.add_edge(11, 12, directed=False)
 
     bfs_recursive = BreadthFirstSearch(graph)
     print(bfs_recursive.solve_recursive(start=12))

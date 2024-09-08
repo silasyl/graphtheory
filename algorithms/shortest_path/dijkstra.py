@@ -1,4 +1,4 @@
-from util.graph_structures import AdjacencyList
+from util.graph_structures import AdjacencyList, AdjacencyMatrix
 from util.data_structures import IndexedPriorityQueue
 from heapq import heappush, heappop
 import math
@@ -14,7 +14,9 @@ class DijkstraAlgorithm:
     Based on original code in Java from: https://github.com/williamfiset/Algorithms
     """
 
-    def __init__(self, graph: AdjacencyList):
+    def __init__(self, graph):
+        if isinstance(graph, AdjacencyMatrix):
+            graph = AdjacencyList(graph)
         self.graph = graph
         n = len(graph)
         self.n = n
@@ -148,13 +150,13 @@ class DijkstraAlgorithm:
 
 
 if __name__ == "__main__":
-    graph = AdjacencyList(n=5)
-    graph.add_directed_edge(0, 1, 4)
-    graph.add_directed_edge(0, 2, 1)
-    graph.add_directed_edge(1, 3, 1)
-    graph.add_directed_edge(2, 1, 2)
-    graph.add_directed_edge(2, 3, 5)
-    graph.add_directed_edge(3, 4, 3)
+    graph = AdjacencyList(5)
+    graph.add_edge(0, 1, 4)
+    graph.add_edge(0, 2, 1)
+    graph.add_edge(1, 3, 1)
+    graph.add_edge(2, 1, 2)
+    graph.add_edge(2, 3, 5)
+    graph.add_edge(3, 4, 3)
 
     dijkstra = DijkstraAlgorithm(graph)
     print(dijkstra.solve_lazy(start=0, end=4))
