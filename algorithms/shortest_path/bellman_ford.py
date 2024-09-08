@@ -1,6 +1,4 @@
-from util.graph_structures import AdjacencyList
-from util.data_structures import IndexedPriorityQueue
-from heapq import heappush, heappop
+from util.graph_structures import AdjacencyList, AdjacencyMatrix
 import math
 
 class BellmanFordAlgorithm:
@@ -11,7 +9,9 @@ class BellmanFordAlgorithm:
     Based on original code in Java from: https://github.com/williamfiset/Algorithms
     """
 
-    def __init__(self, graph: AdjacencyList):
+    def __init__(self, graph):
+        if isinstance(graph, AdjacencyMatrix):
+            graph = AdjacencyList(graph)
         self.graph = graph
         n = len(graph)
         self.n = n
@@ -50,17 +50,17 @@ class BellmanFordAlgorithm:
 
 
 if __name__ == "__main__":
-    graph = AdjacencyList(n=9)
-    graph.add_directed_edge(0, 1, 1)
-    graph.add_directed_edge(1, 2, 1)
-    graph.add_directed_edge(2, 4, 1)
-    graph.add_directed_edge(4, 3, -3)
-    graph.add_directed_edge(3, 2, 1)
-    graph.add_directed_edge(1, 5, 4)
-    graph.add_directed_edge(1, 6, 4)
-    graph.add_directed_edge(5, 6, 5)
-    graph.add_directed_edge(6, 7, 4)
-    graph.add_directed_edge(5, 7, 3)
+    graph = AdjacencyList(9)
+    graph.add_edge(0, 1, 1)
+    graph.add_edge(1, 2, 1)
+    graph.add_edge(2, 4, 1)
+    graph.add_edge(4, 3, -3)
+    graph.add_edge(3, 2, 1)
+    graph.add_edge(1, 5, 4)
+    graph.add_edge(1, 6, 4)
+    graph.add_edge(5, 6, 5)
+    graph.add_edge(6, 7, 4)
+    graph.add_edge(5, 7, 3)
 
     bf = BellmanFordAlgorithm(graph)
     print(bf.solve(start=0))
