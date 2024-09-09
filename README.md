@@ -1,7 +1,7 @@
 # graphtheory
 Graph Algorithms with Python
 
-Based on original codes in Java from: https://github.com/williamfiset/
+Based on original codes in Java from: https://github.com/williamfiset/Algorithms
 <br>With my own improvements
 <br>@silasyl
 
