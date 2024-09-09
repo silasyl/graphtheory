@@ -2,6 +2,12 @@ from util.graph_structures import AdjacencyList, AdjacencyMatrix
 from collections import deque
 
 class BreadthFirstSearch:
+    """
+    This is an implementation of doing a breadth first search recursively with a slight cheat of
+    passing in a queue as an argument to the function.
+    Time Complexity: O(V + E)
+    Based on original code in Java from: https://github.com/williamfiset/Algorithms
+    """
 
     def __init__(self, graph):
         if isinstance(graph, AdjacencyMatrix):
@@ -16,14 +22,7 @@ class BreadthFirstSearch:
         self.visited = [False] * n
 
     
-    def solve_recursive(self, start:int) -> int:
-        """
-        This is an implementation of doing a breadth first search recursively with a slight cheat of
-        passing in a queue as an argument to the function.
-        Time Complexity: O(V + E)
-        Based on original code in Java from: https://github.com/williamfiset/Algorithms
-        """
-
+    def solve(self, start:int) -> int:
         # Computes the eccentricity (distance to furtherst node) from the starting node.
         queue = deque([start, self.DEPTH_TOKEN])
         return self.recursive_step(queue)
@@ -79,5 +78,5 @@ if __name__ == "__main__":
     graph.add_edge(0, 10, directed=False)
     graph.add_edge(11, 12, directed=False)
 
-    bfs_recursive = BreadthFirstSearch(graph)
-    print(bfs_recursive.solve_recursive(start=12))
+    bfs = BreadthFirstSearch(graph)
+    print(bfs.solve(start=12))
