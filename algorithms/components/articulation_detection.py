@@ -1,8 +1,8 @@
 from util.graph_structures import AdjacencyList, AdjacencyMatrix
 
-class BridgeDetectionAlgorithm:
+class ArticulationDetectionAlgorithm:
     """
-    Finds all the bridges on an undirected graph.
+    Finds all the articulation points on an undirected graph.
     Time Complexity: O(V+E)
     Based on original code in Java from: https://github.com/williamfiset/Algorithms
     """
@@ -19,35 +19,35 @@ class BridgeDetectionAlgorithm:
         # Low link values
         self.low = [-1] * n
         self.visited = [False] * n
-        self.bridges = []
+        self.is_articulation_point = [False] * n
         self.solved = False
+        self.root_node_outcoming_edge_count = 0
 
 
     def solve(self):
-        # Returns a list of pairs of nodes indicating which nodes form bridges.
-        # The returned list is always of even length and indexes (2*i, 2*i+1) form a
-        # pair. For example, nodes at indexes (0, 1) are a pair, (2, 3) are another
-        # pair, etc...
+        # Returns the indexes for all articulation points in the graph even if the
+        # graph is not fully connected.
 
         if self.solved:
-            return self.bridges
+            return self.is_articulation_point
 
-        # Finds all bridges in the graph across various connected components.
+        # Finds all articulation points in the graph across various connected components.
         for i in range(self.n):
             if self.visited[i]:
                 continue
-            self.dfs(i, -1)
+            self.root_node_outcoming_edge_count = 0
+            self.dfs(i, i, -1)
+            self.is_articulation_point[i] = (self.root_node_outcoming_edge_count > 1)
 
         self.solved = True
-        return self.bridges
+        return self.is_articulation_point
         
     
-    def dfs(self, at, parent):
-        # Perform Depth First Search to find bridges.
-        # # at = current node, parent = previous node. The
-        # bridges list is always of even length and indexes
-        # (2*i, 2*i+1) form a bridge. For example, nodes at
-        # indexes (0, 1) are a bridge, (2, 3) is another etc...
+    def dfs(self, root, at, parent):
+        # Perform Depth First Search to find articulation points.
+
+        if parent == root:
+            self.root_node_outcoming_edge_count += 1
 
         self.visited[at] = True
         self.low[at] = self.id
@@ -62,10 +62,10 @@ class BridgeDetectionAlgorithm:
             if self.visited[to]:
                 self.low[at] = min(self.low[at], self.ids[to])
             else:
-                self.dfs(to, at)
+                self.dfs(root, to, at)
                 self.low[at] = min(self.low[at], self.low[to])
-                if self.ids[at] < self.low[to]:
-                    self.bridges.append((at, to))
+                if self.ids[at] <= self.low[to]:
+                    self.is_articulation_point[at] = True
 
 
 if __name__ == "__main__":
@@ -81,5 +81,5 @@ if __name__ == "__main__":
     graph.add_edge(6, 7, directed=False)
     graph.add_edge(7, 8, directed=False)
 
-    bridges = BridgeDetectionAlgorithm(graph)
+    bridges = ArticulationDetectionAlgorithm(graph)
     print(bridges.solve())
