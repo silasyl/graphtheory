@@ -8,3 +8,5 @@ __pycache__/
 # Ignorar outras configurações específicas do sistema operacional ou IDE (opcional)
 .DS_Store
 Thumbs.db
+
+*.ipynb
