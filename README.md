@@ -56,9 +56,9 @@ Reference: Competitive Programming 3, P. 161, Steven & Felix Halim
 
 ## Directed Acyclic Graphs (DAG):
 
-|Metrics|Topological Sort|
-|--|--|
-|Complexity|O(V+E)|
-|Directed or Undirected graphs|Directed|
-|Cycles on graphs|Acyclic|
-|Weigths|Does not matter|
+|Metrics|Topological Sort|Shortest/Longest Path|
+|--|--|--|
+|Complexity|O(V+E)|O(V+E)|
+|Directed or Undirected graphs|Directed|Directed|
+|Cycles on graphs|Acyclic|Acyclic|
+|Weigths|Does not matter|Weighted|
