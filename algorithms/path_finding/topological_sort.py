@@ -54,19 +54,50 @@ class TopologicalSortAlgorithm:
             i = self.dfs(i, at)
 
         return self.ordering
+    
+
+    def shortest_path(self, start:int, short=True):
+        # A useful application of the topological sort is to find the shortest/longest path
+        # between two nodes in a Directed Acyclic Graph (DAG). Given an adjacency list
+        # this method finds the shortest/longest path to all nodes starting at 'start'.
+
+        topsort = self.solve()
+        dist = [math.inf] * self.n
+        dist[start] = 0
+        dist_aux = 1
+
+        if short is False:
+            dist_aux = -1
+
+        for i in range(self.n):
+            node_index = topsort[i]
+            if dist[node_index] != math.inf:
+                edges = self.graph[node_index]
+                if edges:
+                    for node_to, edge_cost in edges:
+                        new_dist = dist[node_index] + dist_aux*edge_cost
+                        if new_dist < dist[node_to]:
+                            dist[node_to] = new_dist
+        
+        if short is False:
+            for i in range(self.n):
+                if dist[i] != math.inf:
+                    dist[i] *= -1
+
+        return dist
 
 
 if __name__ == "__main__":
     graph = AdjacencyList(7)
-    graph.add_edge(0, 1)
-    graph.add_edge(0, 2)
-    graph.add_edge(0, 5)
-    graph.add_edge(1, 3)
-    graph.add_edge(1, 2)
-    graph.add_edge(2, 3)
-    graph.add_edge(2, 4)
-    graph.add_edge(3, 4)
-    graph.add_edge(5, 4)
+    graph.add_edge(0, 1, 3)
+    graph.add_edge(0, 2, 2)
+    graph.add_edge(0, 5, 3)
+    graph.add_edge(1, 3, 1)
+    graph.add_edge(1, 2, 6)
+    graph.add_edge(2, 3, 1)
+    graph.add_edge(2, 4, 10)
+    graph.add_edge(3, 4, 5)
+    graph.add_edge(5, 4, 7)
 
     topsort = TopologicalSortAlgorithm(graph)
     print(topsort.solve())
