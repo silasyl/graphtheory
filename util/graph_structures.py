@@ -17,6 +17,30 @@ class AdjacencyList:
                 for j in range(self.n):
                     if source.graph[i][j] != math.inf and i != j:
                         self.graph[i].append((j, source.graph[i][j]))
+        elif isinstance(source, Node):
+            # Helper function to recursively traverse the tree
+            def traverse(node):
+                if node is None:
+                    return None
+                # Add the connection for the left child if it exists
+                if node.left is not None:
+                    self.add_edge(node.index, node.left.index, directed=False)
+                    traverse(node.left)
+                # Add the connection for the right child if it exists
+                if node.right is not None:
+                    self.add_edge(node.index, node.right.index, directed=False)
+                    traverse(node.right)
+
+            # Helper function to count the number of nodes in the tree
+            def count_nodes(node):
+                if node is None:
+                    return 0
+                return 1 + count_nodes(node.left) + count_nodes(node.right)
+            
+            # Convert the tree starting from a root Node into an AdjacencyList
+            self.n = count_nodes(source)
+            self.graph = [[] for _ in range(self.n)]
+            traverse(source)
         else:
             raise TypeError("Argument must be an integer or an AdjacencyMatrix instance!")
 
@@ -69,6 +93,17 @@ class AdjacencyMatrix:
         self.graph[from_node][to_node] = weight
         if directed is False:
             self.graph[to_node][from_node] = weight
+
+
+class Node:
+
+    # Build a Tree Node structure.
+
+    def __init__(self, index, value=None):
+        self.index = index
+        self.value = value
+        self.left = None
+        self.right = None
 
 
 if __name__ == "__main__":

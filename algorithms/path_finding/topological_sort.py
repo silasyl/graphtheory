@@ -1,6 +1,4 @@
 from util.graph_structures import AdjacencyList, AdjacencyMatrix
-from util.data_structures import IndexedPriorityQueue
-from heapq import heappush, heappop
 import math
 
 class TopologicalSortAlgorithm:

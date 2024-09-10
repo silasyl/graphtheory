@@ -17,11 +17,13 @@ Based on original codes in Java from: https://github.com/williamfiset/Algorithms
     - dijkstra.py
     - floyd_warshall.py
     - topological_sort.py
+  - trees
+    - tree_height.py
   - breadth_first_search.py
   - depth_first_search.py
 - util
   - data_structures.py (indexed priority queue)
-  - graph_structures.py (adjacency list, adjacency matrix)
+  - graph_structures.py (adjacency list, adjacency matrix, node)
   - view.py
 
 # Components Algorithms:
@@ -62,3 +64,13 @@ Reference: Competitive Programming 3, P. 161, Steven & Felix Halim
 |Directed or Undirected graphs|Directed|Directed|
 |Cycles on graphs|Acyclic|Acyclic|
 |Weigths|Does not matter|Weighted|
+
+# Trees Algorithms:
+
+|Metrics|Tree Height|
+|--|--|
+|Complexity|O(V)|
+
+Definitions:
+
+- <b>Tree</b>: A connected graph with N nodes an N-1 edges.
