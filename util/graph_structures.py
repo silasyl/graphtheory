@@ -17,7 +17,7 @@ class AdjacencyList:
                 for j in range(self.n):
                     if source.graph[i][j] != math.inf and i != j:
                         self.graph[i].append((j, source.graph[i][j]))
-        elif isinstance(source, Node):
+        elif isinstance(source, BinaryNode):
             # Helper function to recursively traverse the tree
             def traverse(node):
                 if node is None:
@@ -95,15 +95,25 @@ class AdjacencyMatrix:
             self.graph[to_node][from_node] = weight
 
 
-class Node:
+class BinaryNode:
 
-    # Build a Tree Node structure.
+    # Build a Binary Tree structure.
 
     def __init__(self, index, value=None):
         self.index = index
         self.value = value
         self.left = None
         self.right = None
+
+
+class Node:
+
+    # Build a Tree structure.
+
+    def __init__(self, index, value=None):
+        self.index = index
+        self.value = value
+        self.children = []
 
 
 if __name__ == "__main__":
