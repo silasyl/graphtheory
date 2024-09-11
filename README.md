@@ -68,6 +68,17 @@ Reference: Competitive Programming 3, P. 161, Steven & Felix Halim
 |Cycles on graphs|Acyclic|Acyclic|
 |Weigths|Does not matter|Weighted|
 
+## Cycles:
+
+|Metrics|TSP Brute Force|TSP Dynamic Programming|
+|--|--|--|
+|Complexity|O(n!)|Time Complexity: O(n<sup>2</sup> * 2<sup>n</sup>) / Space Complexity: O(n * 2<sup>n</sup>)|
+Recommendation|Up until 12 nodes|Up until 23 nodes|
+
+Definitions:
+
+- <b>TSP</b>: Travelling Salesman Problem, which is the Hamiltonian cycle (path that visits every node once) of minimum cost.
+
 # Trees Algorithms:
 
 |Metrics|Tree Height|Rooting|Center|AHU (Aho, Hopcroft, Ullman)|
