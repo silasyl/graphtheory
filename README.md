@@ -18,6 +18,7 @@ Based on original codes in Java from: https://github.com/williamfiset/Algorithms
     - floyd_warshall.py
     - topological_sort.py
   - trees
+    - center.py
     - rooting.py
     - tree_height.py
   - breadth_first_search.py
@@ -68,10 +69,10 @@ Reference: Competitive Programming 3, P. 161, Steven & Felix Halim
 
 # Trees Algorithms:
 
-|Metrics|Tree Height|Rooting|
-|--|--|--|
-|Complexity|O(V)|O(V+E)|
-|Application|Detect height of a tree|Transform an undirected graph into a rooted tree|
+|Metrics|Tree Height|Rooting|Center|
+|--|--|--|--|
+|Complexity|O(V)|O(V+E)|O(V+E)|
+|Application|Detect height of a tree|Transform an undirected graph into a rooted tree|Identify tree center(s)|
 
 Definitions:
 
