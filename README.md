@@ -18,6 +18,7 @@ Based on original codes in Java from: https://github.com/williamfiset/Algorithms
     - floyd_warshall.py
     - topological_sort.py
   - trees
+    - ahu.py
     - center.py
     - rooting.py
     - tree_height.py
@@ -69,11 +70,12 @@ Reference: Competitive Programming 3, P. 161, Steven & Felix Halim
 
 # Trees Algorithms:
 
-|Metrics|Tree Height|Rooting|Center|
-|--|--|--|--|
-|Complexity|O(V)|O(V+E)|O(V+E)|
-|Application|Detect height of a tree|Transform an undirected graph into a rooted tree|Identify tree center(s)|
+|Metrics|Tree Height|Rooting|Center|AHU (Aho, Hopcroft, Ullman)|
+|--|--|--|--|--|
+|Complexity|O(V)|O(V+E)|O(V+E)||
+|Application|Detect height of a tree|Transform an undirected graph into a rooted tree|Identify tree center(s)|Detect isomorphic trees|
 
 Definitions:
 
 - <b>Tree</b>: A connected graph with N nodes an N-1 edges.
+- <b>Isomorphism</b>: Isomorphic graphs are graphs that are structurally the same. In simple terms, for an isomorphism to exist there needs to be a function which can map all the nodes/edges in G1 to G2 and vice-versa.
