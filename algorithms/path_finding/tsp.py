@@ -76,7 +76,6 @@ class TSPAlgorithm:
         self.min_tour_cost = best_tour_cost
         self.solved = True
     
-
     def compute_tour_cost(self, tour):
         # Compute the total cost of the tour by summing the edge weights between consecutive nodes.
         cost = 0
@@ -158,8 +157,6 @@ class TSPAlgorithm:
         return min_cost
 
 
-
-
 if __name__ == "__main__":
     n = 10
     matrix = [[100] * n for _ in range(n)]
@@ -171,8 +168,9 @@ if __name__ == "__main__":
         matrix[optimal_tour[i - 1]][optimal_tour[i]] = edge_cost
 
     tsp_solver = TSPAlgorithm(matrix)
-    best_tour = tsp_solver.solve_brute_force()
+
+    best_tour = tsp_solver.get_tour()
     print("Best tour:", best_tour)
 
-    tour_cost = tsp_solver.compute_tour_cost(best_tour)
+    tour_cost = tsp_solver.get_tour_cost()
     print("Tour cost:", tour_cost)

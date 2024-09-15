@@ -17,6 +17,7 @@ Based on original codes in Java from: https://github.com/williamfiset/Algorithms
     - dijkstra.py
     - floyd_warshall.py
     - topological_sort.py
+    - tsp.py
   - trees
     - ahu.py
     - center.py
@@ -68,7 +69,7 @@ Reference: Competitive Programming 3, P. 161, Steven & Felix Halim
 |Cycles on graphs|Acyclic|Acyclic|
 |Weigths|Does not matter|Weighted|
 
-## Cycles:
+## Travelling Salesman Problem:
 
 |Metrics|TSP Brute Force|TSP Dynamic Programming|
 |--|--|--|
@@ -78,6 +79,18 @@ Recommendation|Up until 12 nodes|Up until 23 nodes|
 Definitions:
 
 - <b>TSP</b>: Travelling Salesman Problem, which is the Hamiltonian cycle (path that visits every node once) of minimum cost.
+
+## Eulerian Paths
+
+|Settings|Eulerian Circuit|Eulerian Path|
+|--|--|--|
+|Undirected Graph|Every vertex has an even degree.|Either every vertex has even degree or exactly two vertices have odd degree.|
+|Directed Graph|Every vertex has equal indegree and outdegree.|At most one vertex has (outdegree)-(indegree)=1 and at most one vertex has (indegree)-(outdegree)=1 and all other vertices have equal in and out degrees.|
+
+Definitions:
+
+- <b>Eulerian Path/Trail</b>: A path of edges that visits all the edges in a graph exactly once.
+- <b>Eulerian Circuit/Cycle</b>: An Eulerian Path which starts and ends on the same vertex.
 
 # Trees Algorithms:
 
