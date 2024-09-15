@@ -15,6 +15,7 @@ Based on original codes in Java from: https://github.com/williamfiset/Algorithms
   - path_finding
     - bellman_ford.py
     - dijkstra.py
+    - eulerian_path.py
     - floyd_warshall.py
     - topological_sort.py
     - tsp.py
@@ -86,6 +87,7 @@ Definitions:
 |--|--|--|
 |Undirected Graph|Every vertex has an even degree.|Either every vertex has even degree or exactly two vertices have odd degree.|
 |Directed Graph|Every vertex has equal indegree and outdegree.|At most one vertex has (outdegree)-(indegree)=1 and at most one vertex has (indegree)-(outdegree)=1 and all other vertices have equal in and out degrees.|
+|Complexity|O(E)|O(E)|
 
 Definitions:
 
